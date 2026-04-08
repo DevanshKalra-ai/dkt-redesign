@@ -432,15 +432,15 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">1000<span>+</span></div>
+        <div class="hero-stat-num"><span class="count-num" data-target="1000">0</span><span>+</span></div>
         <div class="hero-stat-label">Trusted Clients</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">100<span>%</span></div>
+        <div class="hero-stat-num"><span class="count-num" data-target="100">0</span><span>%</span></div>
         <div class="hero-stat-label">Quality Control</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">30<span>+</span></div>
+        <div class="hero-stat-num"><span class="count-num" data-target="30">0</span><span>+</span></div>
         <div class="hero-stat-label">Expert Engineers</div>
       </div>
     </div>
@@ -762,7 +762,14 @@ gsap.from('.hero-label',{opacity:0,x:-20,duration:0.8,delay:0.2,ease:'power3.out
 gsap.from('.hero-headline',{opacity:0,y:40,duration:1,delay:0.4,ease:'power3.out'});
 gsap.from('.hero-sub-wrap',{opacity:0,y:20,duration:0.8,delay:0.9,ease:'power3.out'});
 gsap.from('.hero-actions',{opacity:0,y:20,duration:0.8,delay:1.1,ease:'power3.out'});
-gsap.from('.hero-stats',{opacity:0,duration:0.8,delay:1.4,ease:'power2.out'});
+gsap.from('.hero-stats',{opacity:0,duration:0.8,delay:1.4,ease:'power2.out',onComplete:()=>{
+  document.querySelectorAll('.count-num').forEach(el=>{
+    const target=+el.dataset.target,duration=1800,step=target/duration*16;
+    let cur=0;
+    const tick=()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur);if(cur<target)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);
+  });
+}});
 </script>
 </body>
 </html>
