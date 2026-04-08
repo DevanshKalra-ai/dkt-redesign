@@ -94,7 +94,7 @@ nav{
   background:var(--noise-md) repeat,var(--bg);
   background-size:200px 200px,auto;
 }
-.hero-left{position:relative;z-index:1}
+.hero-left{position:relative;z-index:1;text-align:center;width:100%;display:flex;flex-direction:column;align-items:center}
 .hero-accent{
   position:absolute;left:0;top:0;bottom:0;width:6px;
   background:var(--red);
@@ -112,17 +112,17 @@ nav{
 .hero-label::before{content:'';width:32px;height:2px;background:var(--red)}
 .hero-headline{
   font-family:var(--font-head);
-  font-size:clamp(72px,11vw,148px);
-  line-height:0.92;letter-spacing:0.01em;
+  font-size:clamp(42px,7vw,96px);
+  line-height:1;letter-spacing:0.01em;
   text-transform:uppercase;
-  margin-bottom:12px;
+  margin-bottom:12px;text-align:center;
 }
 .hero-headline .red{color:var(--red)}
 .hero-sub-wrap{
-  margin-bottom:48px;display:flex;align-items:center;gap:16px;margin-top:8px;
+  margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:8px;
 }
 .hero-sub{
-  font-size:18px;color:var(--muted);font-weight:400;
+  font-size:24px;color:var(--muted);font-weight:400;
   min-height:1.5em;letter-spacing:0.01em;
 }
 .hero-cursor{
@@ -378,7 +378,7 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
   nav{padding:0 20px}
   .nav-links{display:none}
   .hero{padding:110px 24px 80px}
-  .hero-headline{font-size:clamp(56px,15vw,96px)}
+  .hero-headline{font-size:clamp(32px,9vw,64px)}
   .products-section,.about-section,.team-section,.contact-section{padding:64px 24px}
   footer{padding:40px 24px 24px}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -421,8 +421,7 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
     <div class="hero-label">Delhi's Trusted Tool Manufacturer</div>
     <h1 class="hero-headline">
       ENGINEERED FOR<br>
-      <span class="red">PRECISION.</span><br>
-      BUILT TO LAST.
+      <span class="red">PRECISION &amp; PERFORMANCE.</span>
     </h1>
     <div class="hero-sub-wrap">
       <div class="hero-sub" id="heroType"><span class="hero-cursor"></span></div>
