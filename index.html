@@ -464,19 +464,19 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
 <section class="stats-section">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-num">1000<span>+</span></div>
+      <div class="stat-num"><span class="count-num" data-target="1000">0</span><span>+</span></div>
       <div class="stat-label">Trusted Clients</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-num"><span class="count-num" data-target="100">0</span><span>%</span></div>
       <div class="stat-label">Client Satisfaction</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-num"><span class="count-num" data-target="100">0</span><span>%</span></div>
       <div class="stat-label">Product Quality</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">30<span>+</span></div>
+      <div class="stat-num"><span class="count-num" data-target="30">0</span><span>+</span></div>
       <div class="stat-label">Expert Engineers</div>
     </div>
   </div>
@@ -738,7 +738,13 @@ gsap.utils.toArray('.prod-card').forEach(function(el,i){
   gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%'},opacity:0,y:30,duration:0.7,delay:(i%2)*0.12,ease:'power2.out'});
 });
 gsap.utils.toArray('.stat-card').forEach(function(el,i){
-  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:20,duration:0.6,delay:i*0.08,ease:'power2.out'});
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:20,duration:0.6,delay:i*0.08,ease:'power2.out',onComplete:function(){
+    var num=el.querySelector('.count-num');
+    if(!num)return;
+    var target=+num.dataset.target,step=target/1800*16,cur=0;
+    var tick=function(){cur=Math.min(cur+step,target);num.textContent=Math.floor(cur);if(cur<target)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);
+  }});
 });
 gsap.utils.toArray('.about-feat,.team-card,.contact-card,.contact-cta').forEach(function(el,i){
   gsap.from(el,{scrollTrigger:{trigger:el,start:'top 92%'},opacity:0,y:16,duration:0.5,delay:(i%2)*0.1,ease:'power2.out'});
