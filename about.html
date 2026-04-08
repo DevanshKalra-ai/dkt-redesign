@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — DKT Karigar's</title>
+<link rel="icon" href="https://dktkarigars.co.in/nimg/nlogo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--bg:#252220;--bg2:#1e1c1a;--surface:#2e2b29;--surface2:#37332f;--text:#f0ece8;--muted:#8a8480;--red:#dc2626;--red-dim:rgba(220,38,38,0.12);--border:#3a3530;--border2:#4a4440;--font-head:'Anton',sans-serif;--font-body:'Outfit',sans-serif;--font-mono:'JetBrains Mono',monospace;--noise-sm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");--noise-md:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E")}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{background:var(--noise-sm) repeat,var(--bg);background-size:200px 200px,auto;color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:68px;background:rgba(28,26,24,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{background:rgba(245,240,234,0.93);border-radius:5px;padding:3px 10px;display:flex;align-items:center}
+.nav-logo img{height:36px}.nav-links{display:flex;align-items:center;gap:36px}.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width 0.3s}.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown::after{content:'';position:absolute;bottom:-20px;left:-10px;right:-10px;height:20px}.nav-links .dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;transform:translateX(-50%) translateY(-8px)}.nav-links .dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}.dropdown-menu a{display:block;padding:10px 16px;font-size:13px;border-radius:8px;color:var(--muted);transition:background 0.15s,color 0.15s}.dropdown-menu a:hover{background:var(--surface2);color:var(--text)}.dropdown-menu a::after{display:none}
+.nav-cta{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;transition:background 0.2s}.nav-cta:hover{background:#b91c1c}
+.page-hero{padding:140px 80px 80px;background:var(--noise-md) repeat,var(--bg);background-size:200px 200px,auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border);border-left:6px solid var(--red)}
+.page-hero-grid{position:absolute;inset:0;pointer-events:none;display:none}
+.breadcrumb{font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}.breadcrumb a{color:var(--red)}.breadcrumb span{margin:0 8px;color:#3a3a40}
+.page-title{font-family:var(--font-head);font-size:clamp(48px,8vw,96px);font-weight:900;text-transform:uppercase;line-height:0.95;letter-spacing:-0.01em;margin-bottom:20px}.page-title .red{color:var(--red)}
+.page-desc{font-size:18px;color:var(--muted);max-width:55ch;line-height:1.6}
+.section{padding:80px}
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:80px}
+.stat-box{background:var(--surface);padding:40px 32px;text-align:center}
+.stat-num{font-family:var(--font-head);font-size:56px;font-weight:900;color:var(--text);line-height:1}
+.stat-num span{color:var(--red)}
+.stat-label{font-size:14px;color:var(--muted);margin-top:8px;letter-spacing:0.04em}
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid var(--border)}
+.story-content .section-tag{display:inline-block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);padding:4px 12px;border-radius:100px;margin-bottom:20px}
+.story-content h2{font-family:var(--font-head);font-size:clamp(36px,4vw,56px);font-weight:800;text-transform:uppercase;line-height:1.05;margin-bottom:20px}
+.story-content p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:16px}
+/* Team */
+.team-section{background:var(--surface);border-top:1px solid var(--border)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.team-card{background:var(--surface2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color 0.3s,transform 0.3s}.team-card:hover{border-color:var(--red);transform:translateY(-4px)}
+.team-img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter 0.3s}.team-card:hover .team-img{filter:grayscale(0%)}
+.team-info{padding:24px}.team-role{font-size:11px;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}.team-name{font-family:var(--font-head);font-size:22px;font-weight:700;text-transform:uppercase}
+/* Values */
+.values-section{background:var(--bg2)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px;transition:border-color 0.3s}.value-card:hover{border-color:var(--red)}
+.value-icon{font-size:28px;margin-bottom:16px}.value-title{font-family:var(--font-head);font-size:22px;font-weight:700;text-transform:uppercase;margin-bottom:8px}.value-text{font-size:14px;color:var(--muted);line-height:1.65}
+/* CTA */
+.cta-section{background:var(--red);padding:80px}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center}
+.cta-inner h2{font-family:var(--font-head);font-size:clamp(36px,5vw,64px);font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:16px;line-height:1.05}
+.cta-inner p{font-size:17px;color:rgba(255,255,255,0.8);margin-bottom:32px;line-height:1.6}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--red);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:700;transition:transform 0.15s}.btn-white:hover{transform:translateY(-2px)}
+.btn-outline-white{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:14px 28px;border-radius:8px;border:2px solid rgba(255,255,255,0.4);font-size:14px;font-weight:500;transition:border-color 0.2s,background 0.2s}.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 80px 24px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px}.footer-copy{font-size:13px;color:var(--muted)}.footer-copy span{color:var(--red)}.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:13px;color:var(--muted);transition:color 0.2s}.footer-nav a:hover{color:var(--red)}
+.float-btns{position:fixed;bottom:28px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px}.float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.4)}.float-btn:hover{transform:scale(1.1)}.float-wa{background:#25d366}.float-call{background:var(--red)}
+@media(max-width:1024px){.page-hero,.section,.cta-section{padding-left:40px;padding-right:40px}.story-grid{grid-template-columns:1fr;gap:40px}.stats-row{grid-template-columns:repeat(2,1fr)}.team-grid{grid-template-columns:1fr 1fr}.values-grid{grid-template-columns:1fr 1fr}footer{padding:40px 40px 24px}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:120px 24px 60px}.section{padding:60px 24px}.cta-section{padding:60px 24px}.stats-row{grid-template-columns:1fr 1fr}.team-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:1fr}footer{padding:32px 24px 24px}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="https://dktkarigars.co.in/nimg/nlogo.png" alt="DKT"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <div class="dropdown"><a href="#">Products ▾</a><div class="dropdown-menu"><a href="machines.html">Machines</a><a href="spare-parts.html">Spare Parts</a><a href="abrasives.html">Abrasives</a><a href="diamond-blades.html">Diamond Saw Blades</a></div></div>
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+  </div>
+  <a href="tel:+919718088808" class="nav-cta">📞 +91-9718088808</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>About</div>
+  <h1 class="page-title">About <span class="red">DKT Karigar's</span></h1>
+  <p class="page-desc">Dee Kay Trade Links — Delhi's trusted manufacturer of precision cutting tools, diamond saw blades, and power tool components since day one.</p>
+</section>
+
+<section class="section">
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num">1000<span>+</span></div><div class="stat-label">Trusted Clients</div></div>
+    <div class="stat-box"><div class="stat-num">100<span>%</span></div><div class="stat-label">Quality Control</div></div>
+    <div class="stat-box"><div class="stat-num">100<span>%</span></div><div class="stat-label">Satisfaction Rate</div></div>
+    <div class="stat-box"><div class="stat-num">30<span>+</span></div><div class="stat-label">Expert Engineers</div></div>
+  </div>
+  <div class="story-grid">
+    <img class="story-img" src="https://dktkarigars.co.in/nimg/9.jpg" alt="DKT Workshop">
+    <div class="story-content">
+      <div class="section-tag">Our Story</div>
+      <h2>Built on<br>Craftsmanship</h2>
+      <p>We are DKT Karigar's — Dee Kay Trade Links. Based in Mundka Industrial Area, Delhi, we manufacture and supply precision cutting tools, diamond saw blades, abrasives, and power tool components to professionals across India.</p>
+      <p>With a steadfast dedication to crafting top-tier tools, our expertise shines through in every product we create. From diamond saw blades that slice through concrete to armatures that power heavy-duty grinders — everything we make is built to perform.</p>
+      <p>We don't just sell tools. We understand the demands of the trade. That's why 1000+ professionals across construction, woodworking, and manufacturing trust DKT Karigar's.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team-section section">
+  <div class="section-tag" style="display:inline-block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);padding:4px 12px;border-radius:100px;margin-bottom:20px">Our Team</div>
+  <h2 style="font-family:var(--font-head);font-size:clamp(36px,4vw,56px);font-weight:800;text-transform:uppercase;margin-bottom:8px">People Who Know the Trade</h2>
+  <p style="font-size:17px;color:var(--muted);max-width:50ch">Experienced professionals who've worked the floor and know what tools need to do.</p>
+  <div class="team-grid">
+    <div class="team-card"><img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-1.jpg" alt="Chairman"><div class="team-info"><div class="team-role">Leadership</div><div class="team-name">Chairman</div></div></div>
+    <div class="team-card"><img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-2.jpg" alt="Manager"><div class="team-info"><div class="team-role">Operations</div><div class="team-name">Manager</div></div></div>
+    <div class="team-card"><img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-3.jpg" alt="Asst. Manager"><div class="team-info"><div class="team-role">Field Operations</div><div class="team-name">Asst. Manager</div></div></div>
+  </div>
+</section>
+
+<section class="values-section section">
+  <div class="section-tag" style="display:inline-block;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);padding:4px 12px;border-radius:100px;margin-bottom:20px">What We Stand For</div>
+  <h2 style="font-family:var(--font-head);font-size:clamp(36px,4vw,56px);font-weight:800;text-transform:uppercase;margin-bottom:8px">Our Values</h2>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-icon">⚙️</div><div class="value-title">Precision</div><div class="value-text">Every product is manufactured to exact specifications. Tolerances matter. We don't cut corners on the tools that cut everything else.</div></div>
+    <div class="value-card"><div class="value-icon">🏭</div><div class="value-title">Manufacturing First</div><div class="value-text">We build in-house at our Mundka facility. Full control from raw material to finished product means consistent quality every time.</div></div>
+    <div class="value-card"><div class="value-icon">🛡️</div><div class="value-title">Durability</div><div class="value-text">Tools that last. Our products are designed for demanding use — not planned obsolescence. Built to be replaced only when worn, not broken.</div></div>
+    <div class="value-card"><div class="value-icon">📞</div><div class="value-title">Direct Support</div><div class="value-text">You call, an expert picks up. No automated systems, no long waits. Our team knows the products inside out and can advise instantly.</div></div>
+    <div class="value-card"><div class="value-icon">🏆</div><div class="value-title">Client Satisfaction</div><div class="value-text">1000+ clients trust us. That number grows because we do what we say. On-time delivery, correct specs, no surprises on your job site.</div></div>
+    <div class="value-card"><div class="value-icon">🔧</div><div class="value-title">Trade Knowledge</div><div class="value-text">We understand construction, woodworking, and fabrication at a trade level. We recommend products that actually fit your application.</div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to get the right tools?</h2>
+    <p>Talk to our team. We'll match you with exactly what you need — and get it to you fast.</p>
+    <div class="cta-actions">
+      <a href="https://api.whatsapp.com/send?phone=+919718088808" target="_blank" class="btn-white">💬 WhatsApp Now</a>
+      <a href="contact.html" class="btn-outline-white">View Contact Details</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="footer-bottom"><div class="footer-copy">© 2024 DKT Karigar's — Dee Kay Trade Links. <span>Delhi</span> 110041</div><div class="footer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></footer>
+<div class="float-btns"><a href="https://api.whatsapp.com/send?phone=+919718088808" target="_blank" class="float-btn float-wa">💬</a><a href="tel:+919718088808" class="float-btn float-call">📞</a></div>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.stat-box,.value-card,.team-card').forEach(function(el,i){
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:24,duration:0.6,delay:(i%3)*0.08,ease:'power2.out'});
+});
+</script>
+</body>
+</html>

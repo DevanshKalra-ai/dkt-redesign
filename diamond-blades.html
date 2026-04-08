@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Saw Blades — DKT Karigar's</title>
+<link rel="icon" href="https://dktkarigars.co.in/nimg/nlogo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--bg:#252220;--bg2:#1e1c1a;--surface:#2e2b29;--surface2:#37332f;--text:#f0ece8;--muted:#8a8480;--red:#dc2626;--red-dim:rgba(220,38,38,0.12);--border:#3a3530;--border2:#4a4440;--font-head:'Anton',sans-serif;--font-body:'Outfit',sans-serif;--font-mono:'JetBrains Mono',monospace;--noise-sm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");--noise-md:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E")}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{background:var(--noise-sm) repeat,var(--bg);background-size:200px 200px,auto;color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:68px;background:rgba(28,26,24,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{background:rgba(245,240,234,0.93);border-radius:5px;padding:3px 10px;display:flex;align-items:center}
+.nav-logo img{height:36px}.nav-links{display:flex;align-items:center;gap:36px}.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width 0.3s}.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown::after{content:'';position:absolute;bottom:-20px;left:-10px;right:-10px;height:20px}.nav-links .dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;transform:translateX(-50%) translateY(-8px)}.nav-links .dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}.dropdown-menu a{display:block;padding:10px 16px;font-size:13px;border-radius:8px;color:var(--muted);transition:background 0.15s,color 0.15s}.dropdown-menu a:hover{background:var(--surface2);color:var(--text)}.dropdown-menu a::after{display:none}
+.nav-cta{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;transition:background 0.2s}.nav-cta:hover{background:#b91c1c}
+.page-hero{padding:140px 80px 80px;background:var(--noise-md) repeat,var(--bg);background-size:200px 200px,auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border);border-left:6px solid var(--red)}
+.page-hero-grid{position:absolute;inset:0;pointer-events:none;display:none}
+.breadcrumb{font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}.breadcrumb a{color:var(--red)}.breadcrumb span{margin:0 8px;color:#3a3a40}
+.page-title{font-family:var(--font-head);font-size:clamp(48px,8vw,96px);font-weight:900;text-transform:uppercase;line-height:0.95;letter-spacing:-0.01em;margin-bottom:20px}.page-title .red{color:var(--red)}
+.page-desc{font-size:18px;color:var(--muted);max-width:55ch;line-height:1.6}
+.products-section{padding:80px;background:var(--bg2)}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prod-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color 0.3s,transform 0.3s}.prod-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.prod-img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.5s}.prod-card:hover .prod-img{transform:scale(1.04)}
+.prod-body{padding:20px}.prod-num{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.12em;margin-bottom:6px}.prod-name{font-family:var(--font-head);font-size:20px;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.prod-cta{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--red);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-top:12px;transition:gap 0.2s}.prod-card:hover .prod-cta{gap:10px}
+.contact-strip{padding:60px 80px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.strip-text h3{font-family:var(--font-head);font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:4px}.strip-text p{font-size:15px;color:var(--muted)}
+.strip-actions{display:flex;gap:12px}.btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;transition:background 0.2s}.btn-red:hover{background:#b91c1c}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);padding:14px 28px;border-radius:8px;border:1px solid var(--border2);font-size:14px;font-weight:500;transition:border-color 0.2s,background 0.2s}.btn-outline:hover{border-color:var(--text);background:var(--surface2)}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 80px 24px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px}.footer-copy{font-size:13px;color:var(--muted)}.footer-copy span{color:var(--red)}.footer-nav{display:flex;gap:24px}.footer-nav a{font-size:13px;color:var(--muted);transition:color 0.2s}.footer-nav a:hover{color:var(--red)}
+.float-btns{position:fixed;bottom:28px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px}.float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.4)}.float-btn:hover{transform:scale(1.1)}.float-wa{background:#25d366}.float-call{background:var(--red)}
+@media(max-width:1024px){.page-hero,.products-section,.contact-strip{padding-left:40px;padding-right:40px}.products-grid{grid-template-columns:repeat(2,1fr)}footer{padding:40px 40px 24px}}
+@media(max-width:768px){nav{padding:0 20px}.nav-links{display:none}.page-hero{padding:120px 24px 60px}.products-section{padding:60px 24px}.products-grid{grid-template-columns:1fr}.contact-strip{padding:40px 24px;flex-direction:column;text-align:center}.strip-actions{justify-content:center}footer{padding:32px 24px 24px}.footer-bottom{flex-direction:column;gap:16px;text-align:center}.footer-nav{flex-wrap:wrap;justify-content:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="https://dktkarigars.co.in/nimg/nlogo.png" alt="DKT"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <div class="dropdown"><a href="#">Products ▾</a><div class="dropdown-menu"><a href="machines.html">Machines</a><a href="spare-parts.html">Spare Parts</a><a href="abrasives.html">Abrasives</a><a href="diamond-blades.html">Diamond Saw Blades</a></div></div>
+    <a href="about.html">About</a><a href="contact.html">Contact</a>
+  </div>
+  <a href="tel:+919718088808" class="nav-cta">📞 +91-9718088808</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="#">Products</a><span>/</span>Diamond Saw Blades</div>
+  <h1 class="page-title">Diamond <span class="red">Saw Blades</span></h1>
+  <p class="page-desc">Premium diamond and TCT saw blades engineered to slice through stone, concrete, tiles, wood, and metal with precision and consistency. Built for professionals.</p>
+</section>
+
+<section class="products-section">
+  <div class="products-grid">
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/30.jpeg" alt="Diamond Blade" loading="lazy"><div class="prod-body"><div class="prod-num">01</div><div class="prod-name">Diamond Saw Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/31.jpeg" alt="TCT Blade" loading="lazy"><div class="prod-body"><div class="prod-num">02</div><div class="prod-name">T.C.T Saw Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/32.jpeg" alt="Saw Blade" loading="lazy"><div class="prod-body"><div class="prod-num">03</div><div class="prod-name">Diamond Cutting Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/33.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">04</div><div class="prod-name">Stone Cutting Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/34.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">05</div><div class="prod-name">Tile Cutting Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/35.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">06</div><div class="prod-name">Concrete Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/56.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">07</div><div class="prod-name">Diamond Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/57.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">08</div><div class="prod-name">TCT Wood Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+    <div class="prod-card"><img class="prod-img" src="https://dktkarigars.co.in/nimg/58.jpeg" alt="" loading="lazy"><div class="prod-body"><div class="prod-num">09</div><div class="prod-name">Precision Blade</div><div class="prod-cta">Enquire Now →</div></div></div>
+  </div>
+</section>
+
+<div class="contact-strip">
+  <div class="strip-text"><h3>Custom blade specifications?</h3><p>We manufacture blades to spec. Tell us the material, size, and RPM requirements.</p></div>
+  <div class="strip-actions">
+    <a href="https://api.whatsapp.com/send?phone=+919718088808&text=Hi, I need diamond saw blades with custom specs." target="_blank" class="btn-red">💬 WhatsApp Us</a>
+    <a href="tel:+919718088808" class="btn-outline">📞 Call Now</a>
+  </div>
+</div>
+<footer><div class="footer-bottom"><div class="footer-copy">© 2024 DKT Karigar's — Dee Kay Trade Links. <span>Delhi</span> 110041</div><div class="footer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div></footer>
+<div class="float-btns"><a href="https://api.whatsapp.com/send?phone=+919718088808" target="_blank" class="float-btn float-wa">💬</a><a href="tel:+919718088808" class="float-btn float-call">📞</a></div>
+<script>gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray('.prod-card').forEach(function(el,i){gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:24,duration:0.6,delay:(i%3)*0.1,ease:'power2.out'});});</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DKT Karigar's</title>
+<link rel="icon" href="https://dktkarigars.co.in/nimg/nlogo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--bg:#252220;--bg2:#1e1c1a;--surface:#2e2b29;--surface2:#37332f;--text:#f0ece8;--muted:#8a8480;--red:#dc2626;--red-dim:rgba(220,38,38,0.12);--red-glow:rgba(220,38,38,0.25);--border:#3a3530;--border2:#4a4440;--font-head:'Anton',sans-serif;--font-body:'Outfit',sans-serif;--font-mono:'JetBrains Mono',monospace;--noise-sm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");--noise-md:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E")}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{background:var(--noise-sm) repeat,var(--bg);background-size:200px 200px,auto;color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:68px;background:rgba(28,26,24,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{background:rgba(245,240,234,0.93);border-radius:5px;padding:3px 10px;display:flex;align-items:center}
+.nav-logo img{height:36px}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--red);transition:width 0.3s}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown::after{content:'';position:absolute;bottom:-20px;left:-10px;right:-10px;height:20px}
+.nav-links .dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px;min-width:200px;opacity:0;pointer-events:none;transition:opacity 0.2s,transform 0.2s;transform:translateX(-50%) translateY(-8px)}
+.nav-links .dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dropdown-menu a{display:block;padding:10px 16px;font-size:13px;border-radius:8px;color:var(--muted);transition:background 0.15s,color 0.15s}
+.dropdown-menu a:hover{background:var(--surface2);color:var(--text)}.dropdown-menu a::after{display:none}
+.nav-cta{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:#b91c1c}
+
+/* PAGE HERO */
+.page-hero{padding:140px 80px 80px;background:var(--noise-md) repeat,var(--bg);background-size:200px 200px,auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border);border-left:6px solid var(--red)}
+.page-hero-grid{position:absolute;inset:0;pointer-events:none;display:none}
+.breadcrumb{font-size:12px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}
+.breadcrumb a{color:var(--red)}.breadcrumb span{margin:0 8px;color:#3a3a40}
+.page-title{font-family:var(--font-head);font-size:clamp(48px,8vw,96px);font-weight:900;text-transform:uppercase;line-height:0.95;letter-spacing:-0.01em;margin-bottom:20px}
+.page-title .red{color:var(--red)}
+.page-desc{font-size:18px;color:var(--muted);max-width:55ch;line-height:1.6}
+
+/* CONTACT SECTION */
+.contact-section{padding:80px;background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+
+/* Info Side */
+.contact-quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.quick-btn{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color 0.2s,background 0.2s;cursor:pointer}
+.quick-btn:hover{border-color:var(--red);background:var(--red-dim)}
+.quick-btn.whatsapp:hover{border-color:#22c55e;background:rgba(34,197,94,0.08)}
+.quick-icon{font-size:24px;flex-shrink:0}
+.quick-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
+.quick-val{font-size:15px;font-weight:600}
+
+.info-cards{display:flex;flex-direction:column;gap:12px}
+.info-card{display:flex;align-items:flex-start;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;transition:border-color 0.2s}
+.info-card:hover{border-color:var(--border2)}
+.info-icon{width:40px;height:40px;border-radius:8px;background:var(--red-dim);border:1px solid rgba(220,38,38,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.info-label{font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px}
+.info-val{font-size:14px;color:var(--text);line-height:1.6}
+.info-val a{color:var(--text);transition:color 0.2s}.info-val a:hover{color:var(--red)}
+
+/* Map Side */
+.map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);height:100%;min-height:480px;position:sticky;top:90px}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(100%) invert(90%) hue-rotate(180deg)}
+
+/* PHONES STRIP */
+.phones-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 80px}
+.phones-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.phone-card{padding:40px 32px;border-right:1px solid var(--border);transition:background 0.2s}
+.phone-card:last-child{border-right:none}
+.phone-card:hover{background:var(--surface2)}
+.phone-type{font-size:11px;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.phone-num{font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--text)}
+.phone-num a{color:var(--text);transition:color 0.2s}.phone-num a:hover{color:var(--red)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 80px 24px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px}
+.footer-copy{font-size:13px;color:var(--muted)}.footer-copy span{color:var(--red)}
+.footer-nav{display:flex;gap:24px}
+.footer-nav a{font-size:13px;color:var(--muted);transition:color 0.2s}.footer-nav a:hover{color:var(--red)}
+
+/* FLOATS */
+.float-btns{position:fixed;bottom:28px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px}
+.float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;transition:transform 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:#25d366}.float-call{background:var(--red)}
+
+@media(max-width:1024px){
+  .page-hero,.contact-section,.phones-strip{padding-left:40px;padding-right:40px}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .map-wrap{position:static;height:380px}
+  .phones-inner{grid-template-columns:1fr}
+  .phone-card{border-right:none;border-bottom:1px solid var(--border)}
+  .phone-card:last-child{border-bottom:none}
+  footer{padding:40px 40px 24px}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}.nav-links{display:none}
+  .page-hero{padding:120px 24px 60px}
+  .contact-section{padding:60px 24px}
+  .phones-strip{padding:0 24px}
+  .contact-quick{grid-template-columns:1fr}
+  footer{padding:32px 24px 24px}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .footer-nav{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="https://dktkarigars.co.in/nimg/nlogo.png" alt="DKT"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <a href="#">Products ▾</a>
+      <div class="dropdown-menu">
+        <a href="machines.html">Machines</a>
+        <a href="spare-parts.html">Spare Parts</a>
+        <a href="abrasives.html">Abrasives</a>
+        <a href="diamond-blades.html">Diamond Saw Blades</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="tel:+919718088808" class="nav-cta">📞 +91-9718088808</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Contact</div>
+  <h1 class="page-title">Let's <span class="red">Talk.</span></h1>
+  <p class="page-desc">Have a requirement? Need a quote? Call, WhatsApp, or visit our facility in Mundka, Delhi. We respond fast — always.</p>
+</section>
+
+<!-- PHONES STRIP -->
+<div class="phones-strip">
+  <div class="phones-inner">
+    <div class="phone-card">
+      <div class="phone-type">Primary</div>
+      <div class="phone-num"><a href="tel:+919718088808">+91-9718088808</a></div>
+    </div>
+    <div class="phone-card">
+      <div class="phone-type">Secondary</div>
+      <div class="phone-num"><a href="tel:+919717886313">+91-9717886313</a></div>
+    </div>
+    <div class="phone-card">
+      <div class="phone-type">Alternate</div>
+      <div class="phone-num"><a href="tel:+919082928478">+91-9082928478</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT DETAILS + MAP -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- Left: Info -->
+    <div>
+      <!-- Quick Action Buttons -->
+      <div style="margin-bottom:32px">
+        <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Quickest ways to reach us</div>
+        <div class="contact-quick">
+          <a href="https://api.whatsapp.com/send?phone=+919718088808&text=Hello, I want to enquire about your products." target="_blank" class="quick-btn whatsapp">
+            <span class="quick-icon">💬</span>
+            <div><div class="quick-label">WhatsApp</div><div class="quick-val">Chat Now</div></div>
+          </a>
+          <a href="tel:+919718088808" class="quick-btn">
+            <span class="quick-icon">📞</span>
+            <div><div class="quick-label">Call Us</div><div class="quick-val">+91-9718088808</div></div>
+          </a>
+          <a href="mailto:deekaytradelinks@gmail.com" class="quick-btn" style="grid-column:span 2">
+            <span class="quick-icon">✉️</span>
+            <div><div class="quick-label">Email</div><div class="quick-val">deekaytradelinks@gmail.com</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Info Cards -->
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Factory & Office Address</div>
+            <div class="info-val">
+              1st Floor, Khasra No.83/11/3, Road 2<br>
+              Mundka Industrial Area, Udyog Nagar<br>
+              South Side, Delhi — 110041
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">⏰</div>
+          <div>
+            <div class="info-label">Business Hours</div>
+            <div class="info-val">
+              Monday – Saturday: 9:00 AM – 7:00 PM<br>
+              <span style="color:var(--muted);font-size:13px">WhatsApp available beyond hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🏭</div>
+          <div>
+            <div class="info-label">What We Supply</div>
+            <div class="info-val">
+              Diamond Saw Blades · T.C.T Blades · Electric Power Tools<br>
+              Abrasives · Armatures & Stators · Carbon Brushes · Gears
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Map -->
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3500.3185997070705!2d77.01704027550261!3d28.680114675638638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDQwJzQ4LjQiTiA3N8KwMDEnMTAuNiJF!5e0!3m2!1sen!2sin!4v1706532423471!5m2!1sen!2sin"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 DKT Karigar's — Dee Kay Trade Links. <span>Delhi</span> 110041</div>
+    <div class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="machines.html">Products</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://api.whatsapp.com/send?phone=+919718088808" target="_blank" class="float-btn float-wa">💬</a>
+  <a href="tel:+919718088808" class="float-btn float-call">📞</a>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.info-card,.quick-btn,.phone-card').forEach(function(el,i){
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:20,duration:0.5,delay:i*0.07,ease:'power2.out'});
+});
+gsap.from('.page-title',{opacity:0,y:40,duration:1,delay:0.3,ease:'power3.out'});
+gsap.from('.page-desc',{opacity:0,y:20,duration:0.8,delay:0.6,ease:'power3.out'});
+</script>
+</body>
+</html>

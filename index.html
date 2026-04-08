@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DKT Karigar's — Precision cutting tools, diamond saw blades, abrasives and power tool spare parts. Delhi's leading tool manufacturer.">
+<title>DKT Karigar's — Precision Cutting Tools & Machinery</title>
+<link rel="icon" href="https://dktkarigars.co.in/nimg/nlogo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --bg: #252220;
+  --bg2: #1e1c1a;
+  --surface: #2e2b29;
+  --surface2: #37332f;
+  --text: #f0ece8;
+  --muted: #8a8480;
+  --muted2: #4a4540;
+  --red: #dc2626;
+  --red-dim: rgba(220,38,38,0.12);
+  --red-glow: rgba(220,38,38,0.3);
+  --border: #3a3530;
+  --border2: #4a4440;
+  --font-head: 'Anton', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --noise-sm: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  --noise-md: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+}
+
+/* ─── RESET ─── */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--noise-sm) repeat,var(--bg);background-size:200px 200px,auto;color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--red)}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:70px;
+  background:rgba(28,26,24,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{background:rgba(245,240,234,0.93);border-radius:5px;padding:3px 10px;display:flex;align-items:center}
+.nav-logo img{height:38px;width:auto}
+.nav-links{display:flex;align-items:center;gap:40px}
+.nav-links a{
+  font-size:13px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);
+  transition:color 0.2s;position:relative;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;background:var(--red);transition:width 0.3s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown::after{content:'';position:absolute;bottom:-20px;left:-10px;right:-10px;height:20px}
+.nav-links .dropdown-menu{
+  position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:8px;min-width:210px;opacity:0;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s;transform:translateX(-50%) translateY(-8px);
+}
+.nav-links .dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dropdown-menu a{display:block;padding:10px 16px;font-size:13px;border-radius:6px;color:var(--muted);transition:background 0.15s,color 0.15s}
+.dropdown-menu a:hover{background:var(--surface2);color:var(--text)}
+.dropdown-menu a::after{display:none}
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;
+  padding:10px 22px;border-radius:6px;
+  font-size:13px;font-weight:700;letter-spacing:0.06em;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:#b91c1c}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;min-height:100dvh;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding:110px 80px 80px;overflow:hidden;
+  background:var(--noise-md) repeat,var(--bg);
+  background-size:200px 200px,auto;
+}
+.hero-left{position:relative;z-index:1}
+.hero-accent{
+  position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:var(--red);
+}
+.hero-accent-stripe{
+  position:absolute;right:0;top:0;bottom:0;width:40%;
+  background:linear-gradient(to left,rgba(220,38,38,0.04),transparent);
+  pointer-events:none;
+}
+.hero-label{
+  font-size:12px;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--red);
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;
+}
+.hero-label::before{content:'';width:32px;height:2px;background:var(--red)}
+.hero-headline{
+  font-family:var(--font-head);
+  font-size:clamp(72px,11vw,148px);
+  line-height:0.92;letter-spacing:0.01em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.hero-headline .red{color:var(--red)}
+.hero-sub-wrap{
+  margin-bottom:48px;display:flex;align-items:center;gap:16px;margin-top:8px;
+}
+.hero-sub{
+  font-size:18px;color:var(--muted);font-weight:400;
+  min-height:1.5em;letter-spacing:0.01em;
+}
+.hero-cursor{
+  display:inline-block;width:2px;height:1em;
+  background:var(--red);margin-left:2px;
+  vertical-align:text-bottom;animation:blink 0.7s step-end infinite;
+}
+@keyframes blink{50%{opacity:0}}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;
+  padding:15px 34px;border-radius:6px;
+  font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  transition:background 0.2s,transform 0.15s;
+}
+.btn-primary:hover{background:#b91c1c;transform:translateY(-2px)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid var(--border2);color:var(--text);
+  padding:13px 34px;border-radius:6px;
+  font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  transition:border-color 0.2s,background 0.2s;
+}
+.btn-secondary:hover{border-color:var(--red);background:var(--red-dim)}
+.hero-stats{
+  display:flex;gap:40px;margin-top:52px;
+  padding-top:28px;border-top:1px solid var(--border);
+}
+.hero-stat-num{
+  font-family:var(--font-head);font-size:36px;color:var(--text);line-height:1;
+}
+.hero-stat-num span{color:var(--red)}
+.hero-stat-label{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px}
+
+
+/* ─── DIVIDER ─── */
+.red-divider{
+  height:4px;background:var(--red);
+}
+
+/* ─── MARQUEE ─── */
+.marquee-strip{
+  padding:18px 0;overflow:hidden;
+  background:var(--surface);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.marquee-track{display:flex;white-space:nowrap;will-change:transform}
+.marquee-item{
+  display:inline-flex;align-items:center;padding:0 28px;flex-shrink:0;
+  font-family:var(--font-head);font-size:17px;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--text);
+}
+.marquee-dot{width:5px;height:5px;border-radius:50%;background:var(--red);margin:0 24px;flex-shrink:0}
+
+/* ─── SECTION LABELS ─── */
+.section-label{
+  display:flex;align-items:center;gap:12px;
+  font-size:12px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--red);
+  margin-bottom:16px;
+}
+.section-label::before{content:'';width:28px;height:2px;background:var(--red)}
+.section-title{
+  font-family:var(--font-head);
+  font-size:clamp(40px,5vw,68px);
+  text-transform:uppercase;line-height:1;
+  letter-spacing:0.01em;margin-bottom:16px;
+}
+.section-sub{font-size:17px;color:var(--muted);line-height:1.65;max-width:55ch}
+
+/* ─── STATS ─── */
+.stats-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--border)}
+.stat-card{
+  background:var(--surface);padding:52px 40px;text-align:center;
+  border-right:1px solid var(--border);
+  position:relative;overflow:hidden;transition:background 0.3s;
+}
+.stat-card:last-child{border-right:none}
+.stat-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--red);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;
+}
+.stat-card:hover::after{transform:scaleX(1)}
+.stat-card:hover{background:var(--surface2)}
+.stat-num{
+  font-family:var(--font-head);
+  font-size:clamp(48px,5vw,72px);
+  color:var(--text);line-height:1;
+}
+.stat-num span{color:var(--red)}
+.stat-label{
+  font-size:13px;color:var(--muted);
+  margin-top:10px;letter-spacing:0.06em;text-transform:uppercase;
+}
+
+/* ─── PRODUCTS ─── */
+.products-section{padding:100px 80px;background:var(--bg2)}
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:56px;border-radius:4px;overflow:hidden}
+.prod-card{
+  background:var(--surface);position:relative;
+  overflow:hidden;cursor:pointer;
+  transition:background 0.3s;
+}
+.prod-card:hover{background:var(--surface2)}
+.prod-img-wrap{height:300px;overflow:hidden}
+.prod-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.04)}
+.prod-img-overlay{
+  position:absolute;top:0;left:0;right:0;height:300px;
+  background:linear-gradient(to bottom,transparent 45%,rgba(37,34,32,0.9) 100%);
+}
+.prod-content{padding:28px 32px}
+.prod-cat{
+  font-size:11px;font-weight:700;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--red);margin-bottom:8px;
+}
+.prod-name{
+  font-family:var(--font-head);font-size:28px;
+  text-transform:uppercase;letter-spacing:0.02em;
+  margin-bottom:8px;line-height:1.05;
+}
+.prod-items{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.prod-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--red);
+  border-bottom:1px solid var(--red);padding-bottom:2px;
+  transition:gap 0.2s;
+}
+.prod-card:hover .prod-link{gap:14px}
+
+/* ─── ABOUT ─── */
+.about-section{padding:100px 80px;background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px}
+.about-img-wrap{position:relative}
+.about-img-main{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border:2px solid var(--border);
+}
+.about-red-bar{
+  position:absolute;top:0;left:-6px;bottom:0;width:6px;background:var(--red);
+}
+.about-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--red);padding:20px 24px;
+}
+.about-badge-num{
+  font-family:var(--font-head);font-size:42px;color:#fff;line-height:1;
+}
+.about-badge-text{font-size:12px;color:rgba(255,255,255,0.8);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px}
+.about-content .section-sub{margin-bottom:20px}
+.about-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.about-feat{
+  background:var(--surface);border-left:3px solid var(--border);
+  padding:16px 18px;transition:border-color 0.2s;
+}
+.about-feat:hover{border-color:var(--red)}
+.about-feat-title{font-size:14px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em}
+.about-feat-text{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ─── TEAM ─── */
+.team-section{padding:100px 80px;background:var(--surface);border-top:1px solid var(--border)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:56px}
+.team-card{background:var(--surface);overflow:hidden;transition:background 0.3s}
+.team-card:hover{background:var(--surface2)}
+.team-img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top;filter:grayscale(40%);transition:filter 0.4s}
+.team-card:hover .team-img{filter:grayscale(0%)}
+.team-info{padding:20px 24px;border-top:3px solid var(--border);transition:border-color 0.3s}
+.team-card:hover .team-info{border-color:var(--red)}
+.team-role{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px}
+.team-name{font-family:var(--font-head);font-size:22px;text-transform:uppercase;letter-spacing:0.02em}
+
+/* ─── CONTACT ─── */
+.contact-section{padding:100px 80px;background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:56px}
+.contact-info-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.contact-card{
+  display:flex;align-items:flex-start;gap:16px;
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--border);
+  padding:20px 24px;transition:border-left-color 0.2s;
+}
+.contact-card:hover{border-left-color:var(--red)}
+.contact-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.contact-info-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+.contact-info-val{font-size:14px;color:var(--text);line-height:1.6}
+.contact-info-val a{color:var(--text);transition:color 0.2s}.contact-info-val a:hover{color:var(--red)}
+.contact-ctas{display:flex;flex-direction:column;gap:10px}
+.contact-cta{
+  display:flex;align-items:center;gap:14px;
+  background:var(--surface);border:1px solid var(--border);
+  padding:18px 22px;transition:border-color 0.2s,background 0.2s;
+}
+.contact-cta:hover{border-color:var(--red);background:var(--red-dim)}
+.contact-cta.wa:hover{border-color:#22c55e;background:rgba(34,197,94,0.08)}
+.contact-cta-icon{font-size:22px}
+.cta-label{font-size:12px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px}
+.cta-val{font-size:15px;font-weight:700}
+.map-wrap{border:1px solid var(--border);border-left:3px solid var(--red);overflow:hidden;height:100%;min-height:400px}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(100%) invert(88%) hue-rotate(180deg)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80px 32px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-logo img{height:38px;margin-bottom:16px}
+.footer-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:28ch}
+.footer-col-title{
+  font-size:11px;font-weight:700;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--text);
+  margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--red);
+  width:fit-content;
+}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:14px;color:var(--muted);transition:color 0.2s}.footer-links a:hover{color:var(--red)}
+.footer-bottom{
+  padding-top:24px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-copy{font-size:13px;color:var(--muted)}
+.footer-copy span{color:var(--red)}
+
+/* ─── FLOATS ─── */
+.float-btns{position:fixed;bottom:28px;right:24px;z-index:999;display:flex;flex-direction:column;gap:10px}
+.float-btn{
+  width:52px;height:52px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;transition:transform 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.5);
+}
+.float-btn:hover{transform:translateY(-2px)}
+.float-wa{background:#25d366}
+.float-call{background:var(--red)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  nav{padding:0 32px}
+  .hero{padding:110px 40px 80px}
+.products-section,.about-section,.team-section,.contact-section{padding:80px 40px}
+  footer{padding:48px 40px 24px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .products-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:48px}
+  .about-badge{right:0}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{padding:110px 24px 80px}
+  .hero-headline{font-size:clamp(56px,15vw,96px)}
+  .products-section,.about-section,.team-section,.contact-section{padding:64px 24px}
+  footer{padding:40px 24px 24px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-card{padding:36px 24px}
+  .team-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .about-feats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="https://dktkarigars.co.in/nimg/nlogo.png" alt="DKT Karigar's">
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <a href="#">Products ▾</a>
+      <div class="dropdown-menu">
+        <a href="machines.html">Machines</a>
+        <a href="spare-parts.html">Spare Parts</a>
+        <a href="abrasives.html">Abrasives</a>
+        <a href="diamond-blades.html">Diamond Saw Blades</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="tel:+919718088808" class="nav-cta">📞 +91-9718088808</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-accent"></div>
+  <div class="hero-left">
+    <div class="hero-label">Delhi's Trusted Tool Manufacturer</div>
+    <h1 class="hero-headline">
+      ENGINEERED FOR<br>
+      <span class="red">PRECISION.</span><br>
+      BUILT TO LAST.
+    </h1>
+    <div class="hero-sub-wrap">
+      <div class="hero-sub" id="heroType"><span class="hero-cursor"></span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">View Products →</a>
+      <a href="contact.html" class="btn-secondary">Get a Quote</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">1000<span>+</span></div>
+        <div class="hero-stat-label">Trusted Clients</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100<span>%</span></div>
+        <div class="hero-stat-label">Quality Control</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">30<span>+</span></div>
+        <div class="hero-stat-label">Expert Engineers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-divider"></div>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="marquee-item">Diamond Saw Blades</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Power Machines</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Abrasives</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Spare Parts</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Angle Grinders</span><span class="marquee-dot"></span>
+    <span class="marquee-item">TCT Blades</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Carbon Brushes</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Flap Discs</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Rotary Hammers</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Delhi Manufacturers</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Diamond Saw Blades</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Power Machines</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Abrasives</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Spare Parts</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Angle Grinders</span><span class="marquee-dot"></span>
+    <span class="marquee-item">TCT Blades</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Carbon Brushes</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Flap Discs</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Rotary Hammers</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Delhi Manufacturers</span><span class="marquee-dot"></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">1000<span>+</span></div>
+      <div class="stat-label">Trusted Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Product Quality</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">30<span>+</span></div>
+      <div class="stat-label">Expert Engineers</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-label">Our Products</div>
+  <h2 class="section-title">Tools That<br>Mean Business</h2>
+  <p class="section-sub">Four product lines built for professionals who demand performance. From heavy machinery to precision abrasives.</p>
+
+  <div class="products-grid">
+    <div class="prod-card" onclick="window.location='machines.html'">
+      <div class="prod-img-wrap">
+        <img src="https://dktkarigars.co.in/nimg/100.jpeg" alt="Power Machines" loading="lazy">
+        <div class="prod-img-overlay"></div>
+      </div>
+      <div class="prod-content">
+        <div class="prod-cat">01 — Machines</div>
+        <div class="prod-name">Power Machinery</div>
+        <div class="prod-items">Electric Planner · Angle Grinder · Marble Cutter · Drill · Router · Jig Saw · Rotary Hammer · Chain Saw</div>
+        <div class="prod-link">View All Machines →</div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="window.location='spare-parts.html'">
+      <div class="prod-img-wrap">
+        <img src="https://dktkarigars.co.in/p/1.jpeg" alt="Spare Parts" loading="lazy">
+        <div class="prod-img-overlay"></div>
+      </div>
+      <div class="prod-content">
+        <div class="prod-cat">02 — Spare Parts</div>
+        <div class="prod-name">Tool Components</div>
+        <div class="prod-items">Armature & Stators · Gears & A+B Washer · Switches · Carbon Brushes · Planner Belt</div>
+        <div class="prod-link">View All Parts →</div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="window.location='abrasives.html'">
+      <div class="prod-img-wrap">
+        <img src="https://dktkarigars.co.in/nimg/31.jpeg" alt="Abrasives" loading="lazy">
+        <div class="prod-img-overlay"></div>
+      </div>
+      <div class="prod-content">
+        <div class="prod-cat">03 — Abrasives</div>
+        <div class="prod-name">Grinding & Finishing</div>
+        <div class="prod-items">Cut-Off Wheels · Flap Disc · Velcro Paper Disc · Fiber Discs</div>
+        <div class="prod-link">View All Abrasives →</div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="window.location='diamond-blades.html'">
+      <div class="prod-img-wrap">
+        <img src="https://dktkarigars.co.in/nimg/30.jpeg" alt="Diamond Saw Blades" loading="lazy">
+        <div class="prod-img-overlay"></div>
+      </div>
+      <div class="prod-content">
+        <div class="prod-cat">04 — Diamond Blades</div>
+        <div class="prod-name">Diamond Saw Blades</div>
+        <div class="prod-items">Diamond Saw Blades · T.C.T Saw Blades — slicing through stone, concrete, wood, and metal with precision</div>
+        <div class="prod-link">View All Blades →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-label">About Us</div>
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-red-bar"></div>
+      <img class="about-img-main" src="https://dktkarigars.co.in/nimg/8.png" alt="DKT Workshop">
+      <div class="about-badge">
+        <div class="about-badge-num">30+</div>
+        <div class="about-badge-text">Years Expertise</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <h2 class="section-title">Precision is<br>Not Optional.</h2>
+      <p class="section-sub">We are Dee Kay Trade Links — a Delhi-based manufacturer of diamond saw blades, power tool spare parts, abrasives, and cutting machinery. Built for professionals who demand tools that perform.</p>
+      <p class="section-sub" style="margin-top:16px">Every product we ship is manufactured under strict quality control at our Mundka, Delhi facility. From woodworking to heavy construction — our tools are built for the job.</p>
+      <div class="about-feats">
+        <div class="about-feat">
+          <div class="about-feat-title">Precision Engineering</div>
+          <div class="about-feat-text">Every blade and component manufactured to tight tolerances.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-title">In-House Manufacturing</div>
+          <div class="about-feat-text">Our Mundka, Delhi factory — full control over quality.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-title">Quality Guaranteed</div>
+          <div class="about-feat-text">100% inspection before every shipment leaves our facility.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-title">Direct Support</div>
+          <div class="about-feat-text">Experts who know the products — no call centres.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="section-label">Our Team</div>
+  <h2 class="section-title">The People Behind<br>The Tools</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-1.jpg" alt="Chairman">
+      <div class="team-info">
+        <div class="team-role">Leadership</div>
+        <div class="team-name">Chairman</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-2.jpg" alt="Manager">
+      <div class="team-info">
+        <div class="team-role">Operations</div>
+        <div class="team-name">Manager</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <img class="team-img" src="https://dktkarigars.co.in/images/team/team-member-3.jpg" alt="Assistant Manager">
+      <div class="team-info">
+        <div class="team-role">Field Operations</div>
+        <div class="team-name">Asst. Manager</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's Talk Tools.</h2>
+  <p class="section-sub">Have a requirement? Call, WhatsApp, or visit us in Mundka, Delhi. We respond fast.</p>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-list">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-val">1st Floor, Khasra No.83/11/3, Road 2<br>Mundka Industrial Area, Delhi 110041</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-val">
+              <a href="tel:+919718088808">+91-9718088808</a> &nbsp;·&nbsp;
+              <a href="tel:+919717886313">+91-9717886313</a> &nbsp;·&nbsp;
+              <a href="tel:+919082928478">+91-9082928478</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-val"><a href="mailto:deekaytradelinks@gmail.com">deekaytradelinks@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-ctas">
+        <a href="https://api.whatsapp.com/send?phone=+919718088808&text=Hello, I want to enquire about your products." target="_blank" class="contact-cta wa">
+          <span class="contact-cta-icon">💬</span>
+          <div><div class="cta-label">WhatsApp</div><div class="cta-val">Chat with us now</div></div>
+        </a>
+        <a href="tel:+919718088808" class="contact-cta">
+          <span class="contact-cta-icon">📞</span>
+          <div><div class="cta-label">Call Us</div><div class="cta-val">+91-9718088808</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3500.3185997070705!2d77.01704027550261!3d28.680114675638638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDQwJzQ4LjQiTiA3N8KwMDEnMTAuNiJF!5e0!3m2!1sen!2sin!4v1706532423471!5m2!1sen!2sin" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="https://dktkarigars.co.in/nimg/nlogo.png" alt="DKT Karigar's"></div>
+      <p class="footer-desc">Dee Kay Trade Links — Delhi's trusted manufacturer of precision cutting tools, diamond saw blades, and power tool components.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Products</div>
+      <div class="footer-links">
+        <a href="machines.html">Machines</a>
+        <a href="spare-parts.html">Spare Parts</a>
+        <a href="abrasives.html">Abrasives</a>
+        <a href="diamond-blades.html">Diamond Saw Blades</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-links">
+        <a href="tel:+919718088808">+91-9718088808</a>
+        <a href="tel:+919717886313">+91-9717886313</a>
+        <a href="mailto:deekaytradelinks@gmail.com">deekaytradelinks@gmail.com</a>
+        <span style="font-size:13px;color:var(--muted);line-height:1.6">Mundka Industrial Area,<br>Delhi 110041</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 DKT Karigar's (Dee Kay Trade Links). All rights reserved. <span>Delhi, India.</span></div>
+    <div style="font-size:13px;color:var(--muted)">Mundka Industrial Area, Delhi 110041</div>
+  </div>
+</footer>
+
+<!-- FLOAT BUTTONS -->
+<div class="float-btns">
+  <a href="https://api.whatsapp.com/send?phone=+919718088808" target="_blank" class="float-btn float-wa">💬</a>
+  <a href="tel:+919718088808" class="float-btn float-call">📞</a>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* Typewriter */
+(function(){
+  var phrases=['Diamond Saw Blades','Power Tool Spare Parts','Industrial Abrasives','Cutting Machinery','Precision Engineering'];
+  var el=document.getElementById('heroType');
+  var pi=0,ci=0,deleting=false,wait=0;
+  function tick(){
+    var phrase=phrases[pi];
+    if(!deleting){ci++;if(ci>phrase.length){wait++;if(wait>50){deleting=true;wait=0;}setTimeout(tick,60);return;}}
+    else{ci--;if(ci<0){ci=0;deleting=false;pi=(pi+1)%phrases.length;setTimeout(tick,400);return;}}
+    el.innerHTML=phrase.substring(0,ci)+'<span class="hero-cursor"></span>';
+    setTimeout(tick,deleting?40:80);
+  }
+  tick();
+})();
+
+/* Marquee */
+(function(){
+  var track=document.getElementById('marqueeTrack');
+  var x=0;
+  (function animate(){x-=0.7;if(x<=-track.scrollWidth/2)x=0;track.style.transform='translateX('+x+'px)';requestAnimationFrame(animate);})();
+})();
+
+/* GSAP scroll animations */
+gsap.utils.toArray('.prod-card').forEach(function(el,i){
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%'},opacity:0,y:30,duration:0.7,delay:(i%2)*0.12,ease:'power2.out'});
+});
+gsap.utils.toArray('.stat-card').forEach(function(el,i){
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},opacity:0,y:20,duration:0.6,delay:i*0.08,ease:'power2.out'});
+});
+gsap.utils.toArray('.about-feat,.team-card,.contact-card,.contact-cta').forEach(function(el,i){
+  gsap.from(el,{scrollTrigger:{trigger:el,start:'top 92%'},opacity:0,y:16,duration:0.5,delay:(i%2)*0.1,ease:'power2.out'});
+});
+gsap.from('.hero-label',{opacity:0,x:-20,duration:0.8,delay:0.2,ease:'power3.out'});
+gsap.from('.hero-headline',{opacity:0,y:40,duration:1,delay:0.4,ease:'power3.out'});
+gsap.from('.hero-sub-wrap',{opacity:0,y:20,duration:0.8,delay:0.9,ease:'power3.out'});
+gsap.from('.hero-actions',{opacity:0,y:20,duration:0.8,delay:1.1,ease:'power3.out'});
+gsap.from('.hero-stats',{opacity:0,duration:0.8,delay:1.4,ease:'power2.out'});
+</script>
+</body>
+</html>
