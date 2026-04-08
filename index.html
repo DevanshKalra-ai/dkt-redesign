@@ -131,7 +131,7 @@ nav{
   vertical-align:text-bottom;animation:blink 0.7s step-end infinite;
 }
 @keyframes blink{50%{opacity:0}}
-.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
 .btn-primary{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--red);color:#fff;
@@ -148,10 +148,6 @@ nav{
   transition:border-color 0.2s,background 0.2s;
 }
 .btn-secondary:hover{border-color:var(--red);background:var(--red-dim)}
-.hero-stats{
-  display:flex;gap:40px;margin-top:52px;
-  padding-top:28px;border-top:1px solid var(--border);
-}
 .hero-stat-num{
   font-family:var(--font-head);font-size:36px;color:var(--text);line-height:1;
 }
@@ -377,8 +373,11 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
 @media(max-width:768px){
   nav{padding:0 20px}
   .nav-links{display:none}
-  .hero{padding:110px 24px 80px}
-  .hero-headline{font-size:clamp(32px,9vw,64px)}
+  .hero{padding:90px 20px 60px;min-height:100svh}
+  .hero-headline{font-size:clamp(28px,9vw,56px)}
+  .hero-sub{font-size:18px}
+  .btn-primary,.btn-secondary{padding:12px 24px;font-size:14px;width:100%;justify-content:center}
+  .hero-actions{flex-direction:column;width:100%}
   .products-section,.about-section,.team-section,.contact-section{padding:64px 24px}
   footer{padding:40px 24px 24px}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -429,20 +428,6 @@ footer{background:var(--surface);border-top:3px solid var(--red);padding:60px 80
     <div class="hero-actions">
       <a href="#products" class="btn-primary">View Products →</a>
       <a href="contact.html" class="btn-secondary">Get a Quote</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num"><span class="count-num" data-target="1000">0</span><span>+</span></div>
-        <div class="hero-stat-label">Trusted Clients</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num"><span class="count-num" data-target="100">0</span><span>%</span></div>
-        <div class="hero-stat-label">Quality Control</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num"><span class="count-num" data-target="30">0</span><span>+</span></div>
-        <div class="hero-stat-label">Expert Engineers</div>
-      </div>
     </div>
   </div>
 </section>
@@ -762,14 +747,6 @@ gsap.from('.hero-label',{opacity:0,x:-20,duration:0.8,delay:0.2,ease:'power3.out
 gsap.from('.hero-headline',{opacity:0,y:40,duration:1,delay:0.4,ease:'power3.out'});
 gsap.from('.hero-sub-wrap',{opacity:0,y:20,duration:0.8,delay:0.9,ease:'power3.out'});
 gsap.from('.hero-actions',{opacity:0,y:20,duration:0.8,delay:1.1,ease:'power3.out'});
-gsap.from('.hero-stats',{opacity:0,duration:0.8,delay:1.4,ease:'power2.out',onComplete:()=>{
-  document.querySelectorAll('.count-num').forEach(el=>{
-    const target=+el.dataset.target,duration=1800,step=target/duration*16;
-    let cur=0;
-    const tick=()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur);if(cur<target)requestAnimationFrame(tick);};
-    requestAnimationFrame(tick);
-  });
-}});
 </script>
 </body>
 </html>
